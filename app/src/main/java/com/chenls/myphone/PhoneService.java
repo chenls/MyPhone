@@ -8,6 +8,7 @@ import android.os.IBinder;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -21,6 +22,7 @@ public class PhoneService extends Service {
 
     @Override
     public void onDestroy() {
+        Toast.makeText(this, "亲爱的，再见了", Toast.LENGTH_LONG).show();
 //        //清空缓存目录下的所有文件
 //        File[] files = getCacheDir().listFiles();
 //        if(files != null){
@@ -36,6 +38,7 @@ public class PhoneService extends Service {
     @Override
     public void onCreate() {
         Log.i("hh", "Service");
+        Toast.makeText(this, "亲爱的，我来了", Toast.LENGTH_LONG).show();
         TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
         tm.listen(new TelListener(), PhoneStateListener.LISTEN_CALL_STATE);
         super.onCreate();
